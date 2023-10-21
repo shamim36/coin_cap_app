@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _selectedCoinDropDown() {
-    List<String> _coins = ["bitcoin"];
+    List<String> _coins = ["bitcoin","ethereum"];
     List<DropdownMenuItem<String>> _items = _coins
         .map(
           (e) => DropdownMenuItem(
