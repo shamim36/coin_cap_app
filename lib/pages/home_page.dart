@@ -90,6 +90,7 @@ class _HomePageState extends State<HomePage> {
           num _bdtPrice = _data["market_data"]["current_price"]["bdt"];
           num _change24h = _data["market_data"]["price_change_percentage_24h"];
 
+
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
@@ -98,6 +99,7 @@ class _HomePageState extends State<HomePage> {
               _coinImageWidget(_data["image"]["large"]),
               _currentPriceWidget(_bdtPrice),
               _percentageChangeWidget(_change24h),
+              _descriptionCardWidget(_data["description"]["en"]),
             ],
           );
         } else {
@@ -135,12 +137,42 @@ class _HomePageState extends State<HomePage> {
 
   Widget _coinImageWidget(String _imgURL) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: _deviceHeight! * 0.02,),
+      padding: EdgeInsets.symmetric(
+        vertical: _deviceHeight! * 0.02,
+      ),
       height: _deviceHeight! * 0.15,
       width: _deviceWidth! * 0.15,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(_imgURL),
+        ),
+      ),
+    );
+  }
+
+  Widget _descriptionCardWidget(String _description) {
+    return Container(
+      height: _deviceHeight! * 0.5,
+      width: _deviceWidth! * 0.90,
+      margin: EdgeInsets.symmetric(
+        vertical: _deviceHeight! * 0.05,
+      ),
+      padding: EdgeInsets.symmetric(
+        vertical: _deviceHeight! * 0.0,
+        horizontal: _deviceWidth! * 0.01,
+      ),
+      color: const Color.fromRGBO(
+        83,
+        88,
+        206,
+        0.5,
+      ),
+      child: SingleChildScrollView(
+        child: Text(
+          _description,
+          style: const TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
     );
