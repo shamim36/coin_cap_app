@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
         1.0,
       ),
       iconSize: 30,
-      icon: Icon(
+      icon: const Icon(
         Icons.arrow_drop_down,
         color: Colors.white,
       ),
@@ -88,6 +88,7 @@ class _HomePageState extends State<HomePage> {
             _snapshot.data.toString(),
           );
           num _bdtPrice = _data["market_data"]["current_price"]["bdt"];
+          num _change24h = _data["market_data"]["price_change_percentage_24h"];
 
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,6 +96,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               _currentPriceWidget(_bdtPrice),
+              _percentageChangeWidget(_change24h),
             ],
           );
         } else {
@@ -114,6 +116,17 @@ class _HomePageState extends State<HomePage> {
       style: const TextStyle(
         color: Colors.white,
         fontSize: 25,
+        fontWeight: FontWeight.w400,
+      ),
+    );
+  }
+
+  Widget _percentageChangeWidget(num _change) {
+    return Text(
+      "${_change.toString()}%",
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 16.5,
         fontWeight: FontWeight.w300,
       ),
     );
