@@ -1,6 +1,9 @@
 # coin_cap_app
 
-A new Flutter project.
+A new Crypto Currency Live Market price and Exchange Rate Monitoring Flutter project.
+
+- Used Documentation: Crypto API documantation 
+- Package : DIO, get_it
 
 ## Getting Started
 
